@@ -1,8 +1,19 @@
+"use client";
 
+import { Heading, Heross, Footer } from "@/components/Home";
 export default function Home() {
   return (
     <div>
-      <h1 className="text-4xl font-bold">hello World</h1>
+      <div className="flex flex-col justify-center items-center h-screen">
+        <Heading/>
+        <Heross/>
+      </div>
+      <Footer/>
     </div>
   );
 }
+
+
+
+
+
