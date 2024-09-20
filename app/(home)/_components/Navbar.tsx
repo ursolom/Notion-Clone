@@ -3,10 +3,12 @@ import Logo from "@/components/Logo";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { cn } from "@/lib/utils";
 import useScroll from "@/hooks/useScroll";
+import { useConvexAuth } from "convex/react";
+import Spinner from "@/components/spinner";
 
 const Navbar = () => {
   const scrolled = useScroll(20);
-
+  const {isAuthenticated,isLoading} = useConvexAuth()
   return (
     <div
       className={cn(
@@ -18,6 +20,7 @@ const Navbar = () => {
     >
       <Logo />
       <div className="flex items-center justify-end space-x-4">
+        {isLoading && <Spinner />}
         <ModeToggle />
       </div>
     </div>
