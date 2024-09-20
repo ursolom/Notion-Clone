@@ -5,17 +5,19 @@ import { cn } from "@/lib/utils";
 import useScroll from "@/hooks/useScroll";
 
 const Navbar = () => {
-  const scrolled = useScroll(100);
+  const scrolled = useScroll(20);
 
   return (
     <div
       className={cn(
-        "flex items-center justify-between py-4 px-6 w-full bg-background dark:bg-[#121212] fixed top-0 z-50 transition-all duration-300",
-        scrolled ? "shadow-sm border-b" : ""
+        "flex items-center justify-between py-4 px-6 w-full  fixed top-0 z-50 transition-all duration-300 ",
+        scrolled
+          ? "shadow-md border-b border-gray-200 dark:border-gray-800 bg-background dark:bg-[#1f1f1f]"
+          : ""
       )}
     >
       <Logo />
-      <div className="md:m-auto md:justify-end flex justify-between items-center md:w-fit w-full gap-x-2">
+      <div className="flex items-center justify-end space-x-4">
         <ModeToggle />
       </div>
     </div>
