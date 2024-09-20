@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import useScroll from "@/hooks/useScroll";
 import { useConvexAuth } from "convex/react";
 import Spinner from "@/components/spinner";
+import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { Home, Link, LogIn, LogOut, LogOut } from "lucide-react";
 
 const Navbar = () => {
   const scrolled = useScroll(20);
@@ -21,6 +24,25 @@ const Navbar = () => {
       <Logo />
       <div className="flex items-center justify-end space-x-4">
         {isLoading && <Spinner />}
+
+        {!isAuthenticated && !isLoading && (
+            <SignInButton>  
+            <Button>
+              Login <LogIn className="w-4 h-4 ml-2" />
+            </Button>
+          </SignInButton>
+        )}
+        {isAuthenticated && !isLoading && (
+          <SignOutButton>
+            <Button variant="ghost" size="icon">  
+              <Link href="/decoments">
+                Enter Notion
+              </Link>
+            </Button>
+            <UserButton afterSignOutUrl="/"/>
+          </SignOutButton>
+        )}
+
         <ModeToggle />
       </div>
     </div>
